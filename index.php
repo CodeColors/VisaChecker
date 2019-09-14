@@ -1,3 +1,10 @@
+<?php
+
+	if(isset($_POST['send'])){
+
+	}
+
+?>
 <html lang="fr">
 <head>
 	<meta charset="utf-8" />
@@ -31,8 +38,8 @@
 
             <!--      Wizard container        -->
             <div class="wizard-container">
-                <div class="card wizard-card" data-color="azzure" id="wizard">
-                    <form action="" method="">
+                <div class="card wizard-card" data-color="blue" id="wizard">
+                    <form action="" method="post">
                 <!--        You can switch ' data-color="azzure" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
                     	<div class="wizard-header">
@@ -57,25 +64,25 @@
                                   <div class="col-sm-5 col-sm-offset-1">
                                       <div class="form-group">
                                         <label>Pseudo Discord</label>
-                                        <input type="text" class="form-control" id="discord" placeholder="Exemple (Knight-HD#0001)" required>
+                                        <input type="text" class="form-control" name="discord" id="discord" placeholder="Exemple (Knight-HD#0001)" required>
                                       </div>
                                   </div>
                                   <div class="col-sm-5">
                                       <div class="form-group">
 																				<label>Age IRL</label>
-                                        <input type="text" class="form-control" id="age" required>
+                                        <input type="text" class="form-control" name="age" id="age" required>
                                       </div>
                                   </div>
                                   <div class="col-sm-5 col-sm-offset-1">
                                       <div class="form-group">
 																				<label>Horaires de connexion</label>
-																				<input type="text" class="form-control" id="horaires" required>
+																				<input type="text" class="form-control" name="horaire" id="horaires" required>
                                       </div>
                                   </div>
                                   <div class="col-sm-5">
                                       <div class="form-group">
 																				<label>Expérience RP</label>
-																				<input type="text" class="form-control" id="exp" required>
+																				<input type="text" class="form-control" name="exp" id="exp" required>
                                       </div>
                                   </div>
                               </div>
@@ -84,13 +91,13 @@
 																<div class="col-sm-12">
 																		<div class="form-group">
 																			<label>Trait du personnage</label>
-																			<input type="text" class="form-control" id="exp" required>
+																			<input type="text" class="form-control" name="traits" id="traits" required>
 																		</div>
 																</div>
 																<div class="col-sm-8">
 																		 <div class="form-group">
 																				<label>Description du personnage</label>
-																				<textarea class="form-control" placeholder="" rows="9">
+																				<textarea class="form-control" name="description" placeholder="" rows="9">
 																				</textarea>
 																			</div>
 																</div>
@@ -103,7 +110,7 @@
 																<div class="col-sm-12">
 																		<div class="form-group">
 																			<label>Future du personnage</label>
-																			<input type="text" class="form-control" id="exp" required>
+																			<input type="text" class="form-control" name="futur" id="futur" required>
 																		</div>
 																</div>
                                 <div class="row">
@@ -111,7 +118,7 @@
 																			<h4 class="info-text">Avez-vous lu les règles </h4>
                                         <div class="col-sm-4 col-sm-offset-2">
                                             <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="Oui j'ai lu les règles et je suis capable d'en restituer certaines.">
-                                                <input type="radio" name="job" value="Design">
+                                                <input type="radio" name="regle" value="oui">
                                                 <div class="icon">
                                                     <i class="fa fa-check"></i>
                                                 </div>
@@ -120,7 +127,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="Non et je vais le lire de ce pas.">
-                                                <input type="radio" name="job" value="Code">
+                                                <input type="radio" name="regle" value="non">
                                                 <div class="icon">
                                                     <i class="fa fa-times"></i>
                                                 </div>
@@ -144,7 +151,7 @@
                         <div class="wizard-footer">
                             	<div class="pull-right">
                                     <input type='button' class='btn btn-next btn-fill btn-info btn-wd btn-sm' name='next' value='Suivant' />
-                                    <input type='button' class='btn btn-finish btn-fill btn-info btn-wd btn-sm' name='finish' value='Terminer' />
+                                    <input type='button' class='btn btn-finish btn-fill btn-info btn-wd btn-sm' name='send' value='Terminer' />
                                 </div>
                                 <div class="pull-left">
                                     <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Retour' />
