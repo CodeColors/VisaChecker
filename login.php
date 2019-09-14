@@ -55,7 +55,7 @@
     <head>
         <title>Visa - Connection Liste</title>
         <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     </head>
     <body>
 
@@ -67,7 +67,7 @@
                 <div class="container">
                   <div class="row">
                     <div class="col-md-9 col-lg-8 mx-auto">
-                      <h3 class="login-heading mb-4">Espace EMS - Los Santos</h3>
+                      <h3 class="login-heading mb-4">Espace Visa - Team-HD</h3>
                       <form method="post">
                         <div class="form-label-group">
                           <input name="user" type="text" id="inputEmail" class="form-control" placeholder="Identifiant" required autofocus>

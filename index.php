@@ -1,7 +1,22 @@
 <?php
+	session_start();
 
+	require('db.php');
 	if(isset($_POST['send'])){
+    $req = $bdd->prepare('INSERT INTO visas(date, discord, nomrp, age, horaires, experience, traits, description, futur, regle) VALUES($CURDATE, :discord, :nomrp, :age, :horaires, :experience, :traits, :description, :futur, :regle)');
+    $req->execute(array(
+				'discord' => $_POST['discord'],
+        'nomrp' => $_POST['nomrp'],
+        'age' => $_POST['age'],
+        'horaires' => $_POST['horaires'],
+				'experience' => $_POST['exp'],
+				'traits' => $_POST['traits'],
+				'description' => $_POST['description'],
+				'futur' => $_POST['futur'],
+				'regle' => $_POST['regle']
 
+    ));
+    header('Location: index.php');
 	}
 
 ?>
@@ -39,14 +54,19 @@
             <!--      Wizard container        -->
             <div class="wizard-container">
                 <div class="card wizard-card" data-color="blue" id="wizard">
-                    <form action="" method="post">
+                    <form method="post">
                 <!--        You can switch ' data-color="azzure" '  with one of the next bright colors: "blue", "green", "orange", "red"          -->
 
                     	<div class="wizard-header">
                         	<h3>
                         	   <b>Enregistrer</b> votre visa <br>
                         	   <small>Afin d'arriver en ville, enregistrer en premier temps un visa</small>
+														 <?php if(isset($_SESSION['id'])){ ?>
+														  <br><hr>
+														 <small><label>Page contrôle visa :</label><a class="btn btn-primary" href="visa_check.php">Acceder</a></small>
+													 <?php } ?>
                         	</h3>
+
                     	</div>
 						<div class="wizard-navigation">
 							<ul>
@@ -73,21 +93,27 @@
                                         <input type="text" class="form-control" name="age" id="age" required>
                                       </div>
                                   </div>
-                                  <div class="col-sm-5 col-sm-offset-1">
+                                  <div class="col-sm-10 col-sm-offset-1">
                                       <div class="form-group">
 																				<label>Horaires de connexion</label>
-																				<input type="text" class="form-control" name="horaire" id="horaires" required>
+																				<textarea class="form-control" name="horaires" placeholder="" rows="7" required></textarea>
                                       </div>
                                   </div>
-                                  <div class="col-sm-5">
+                                  <div class="col-sm-10 col-sm-offset-1">
                                       <div class="form-group">
 																				<label>Expérience RP</label>
-																				<input type="text" class="form-control" name="exp" id="exp" required>
+																				<textarea class="form-control" name="exp" placeholder="" rows="6" required></textarea>
                                       </div>
                                   </div>
                               </div>
                             </div>
                             <div class="tab-pane" id="rp">
+															<div class="col-sm-12">
+																	<div class="form-group">
+																		<label>Nom Roleplay</label>
+																		<input type="text" class="form-control" name="nomrp" id="nomrp" required>
+																	</div>
+															</div>
 																<div class="col-sm-12">
 																		<div class="form-group">
 																			<label>Trait du personnage</label>
@@ -97,8 +123,7 @@
 																<div class="col-sm-8">
 																		 <div class="form-group">
 																				<label>Description du personnage</label>
-																				<textarea class="form-control" name="description" placeholder="" rows="9">
-																				</textarea>
+																				<textarea class="form-control" name="description" placeholder="" rows="9" required></textarea>
 																			</div>
 																</div>
 																<div class="col-sm-4">
@@ -151,7 +176,7 @@
                         <div class="wizard-footer">
                             	<div class="pull-right">
                                     <input type='button' class='btn btn-next btn-fill btn-info btn-wd btn-sm' name='next' value='Suivant' />
-                                    <input type='button' class='btn btn-finish btn-fill btn-info btn-wd btn-sm' name='send' value='Terminer' />
+                                    <input type='submit' class='btn btn-finish btn-fill btn-info btn-wd btn-sm' name='send' value='Terminer' />
                                 </div>
                                 <div class="pull-left">
                                     <input type='button' class='btn btn-previous btn-fill btn-default btn-wd btn-sm' name='previous' value='Retour' />
