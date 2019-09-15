@@ -3,28 +3,30 @@
 
 	require('db.php');
 	if(isset($_POST['send'])){
-    $req = $bdd->prepare('INSERT INTO visas(date, discord, nomrp, age, horaires, experience, traits, description, futur, regle) VALUES($CURDATE, :discord, :nomrp, :age, :horaires, :experience, :traits, :description, :futur, :regle)');
-    $req->execute(array(
-				'discord' => $_POST['discord'],
-        'nomrp' => $_POST['nomrp'],
-        'age' => $_POST['age'],
-        'horaires' => $_POST['horaires'],
-				'experience' => $_POST['exp'],
-				'traits' => $_POST['traits'],
-				'description' => $_POST['description'],
-				'futur' => $_POST['futur'],
-				'regle' => $_POST['regle']
+		$date = date('d-M-Y');
 
-    ));
-    header('Location: index.php');
+    $req = $bdd->prepare('INSERT INTO visas(date, discord, nomrp, age, horaires, experience, traits, description, futur) VALUES(:date, :discord, :nomrp, :age, :horaires, :experience, :traits, :description, :futur)');
+			$req->execute(array(
+					'date'    => $date,
+					'discord' => $_POST['discord'],
+	        'nomrp' => $_POST['nomrp'],
+	        'age' => $_POST['age'],
+	        'horaires' => $_POST['horaires'],
+					'experience' => $_POST['exp'],
+					'traits' => $_POST['traits'],
+					'description' => $_POST['description'],
+					'futur' => $_POST['futur']
+	    ));
+
+    //header('Location: index.php');
+		header('Location: sucess.php');
+
 	}
 
 ?>
 <html lang="fr">
 <head>
 	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="assets/img/favicon.png">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>TEAM-HD - Visa</title>
 
@@ -143,7 +145,7 @@
 																			<h4 class="info-text">Avez-vous lu les règles </h4>
                                         <div class="col-sm-4 col-sm-offset-2">
                                             <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="Oui j'ai lu les règles et je suis capable d'en restituer certaines.">
-                                                <input type="radio" name="regle" value="oui">
+                                                <input type="radio" method="post" name="regle" value="Oui">
                                                 <div class="icon">
                                                     <i class="fa fa-check"></i>
                                                 </div>
@@ -152,7 +154,7 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="Non et je vais le lire de ce pas.">
-                                                <input type="radio" name="regle" value="non">
+                                                <input type="radio" method="post" name="regle" value="Non">
                                                 <div class="icon">
                                                     <i class="fa fa-times"></i>
                                                 </div>
