@@ -17,7 +17,7 @@
         $_SESSION['user'] = $result['user'];
         $_SESSION['rank'] = $result['rank'];
 
-        header('Location: index.php');
+        header('Location: visa-check.php');
     }
 
     if(isset($_POST['signin'])){

@@ -65,7 +65,7 @@
                         	   <small>Afin d'arriver en ville, enregistrer en premier temps un visa</small>
 														 <?php if(isset($_SESSION['id'])){ ?>
 														  <br><hr>
-														 <small><label>Page contrôle visa :</label><a class="btn btn-primary" href="visa_check.php">Acceder</a></small>
+														 <small><label>Page contrôle visa :</label><a class="btn btn-primary" href="visa-check.php">Acceder</a></small>
 													 <?php } ?>
                         	</h3>
 
