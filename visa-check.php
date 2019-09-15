@@ -6,7 +6,7 @@ if(!(isset($_SESSION['id']))){
   header('Location: index.php');
 }
 
-$visaslist = $bdd->query('SELECT * FROM visas');
+$visaslist = $bdd->query('SELECT * FROM visas WHERE checked = 0');
 
 ?>
 <html>
@@ -23,10 +23,14 @@ $visaslist = $bdd->query('SELECT * FROM visas');
                   <div class="panel-heading">
                     <div class="row">
                       <div class="col col-xs-6">
-                        <h3 class="panel-title">Contrôle des visas</h3>
+                        <h3 class="panel-title">Contrôle des visas <small>(a vérifier)</small></h3>
                       </div>
                       <div class="col col-xs-6 text-right">
-                        <?php if($_SESSION['rank'] == "1"){ ?>
+                        <?php if(!(isset($_GET['type'])) OR $_GET['type'] == "0"){ ?>
+                          <a href="visa-check.php?type=1" class="btn btn-sm btn-warning btn-create">Visas vérifiés</a>
+                        <?php }else{ ?>
+                          <a href="visa-check.php?type=0" class="btn btn-sm btn-warning btn-create">Visas à vérifier</a>
+                        <?php } if($_SESSION['rank'] == "1"){ ?>
                           <a href="admin_membre.php" class="btn btn-sm btn-danger btn-create">Douaniers</a>
                         <?php } ?>
                         <a href="logout.php" class="btn btn-sm btn-primary btn-create">Deconnexion</a>
@@ -50,9 +54,9 @@ $visaslist = $bdd->query('SELECT * FROM visas');
                         ?>
                               <tr>
                                 <td align="center">
-                                  <a class="btn btn-default"><em class="fa fa-pencil"></em></a>
+                                  <a href="visa-infos.php?type=0&id=<?php echo $data['id']; ?>" class="btn btn-primary"><em style="color: white;" class="fa fa-search"></em></a>
                                   <?php if($_SESSION['rank'] == "1"){ ?>
-                                  <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                                  <a href="visa-infos.php?type=1&id=<?php echo $data['id']; ?>" class="btn btn-danger"><em class="fa fa-trash"></em></a>
                                 <?php } ?>
                                 </td>
                                 <td class="hidden-xs"><?php echo $data['id']; ?></td>

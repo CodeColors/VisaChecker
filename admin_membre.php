@@ -34,27 +34,16 @@ $accounts = $bdd->query('SELECT * FROM users');
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container">
-            <a class="navbar-brand" href="index.php">EMS - Interface Web</a>
+            <a class="navbar-brand" href="visa-check.php">Visa - Interface Web</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Pages
-                </a>
+
                   <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
-                  <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="dossiers.php">Dossiers Médicaux</a>
-                    <a class="dropdown-item" href="facture.php">Facturation</a>
-                      <a class="dropdown-item" href="logout.php">Deconnexion</a>
-                    <?php if($_SESSION['rank'] == "1"){ ?>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="admin_membre.php">Patron - membres</a>
-                    <?php } ?>
-                  </div>
+                  <a class="btn btn-primary" href="visa-check.php">Retour</a>
                 </li>
               </ul>
             </div>
@@ -63,16 +52,16 @@ $accounts = $bdd->query('SELECT * FROM users');
         <div class="container">
             <br />
             <form method="post" class="form-signin">
-            <h1>Enregister un nouveau membre</h1>
+            <h1>Enregister un nouveau douanier</h1>
             <label>Username :</label><input type="text" class="form-control" name="login" placeholder="Votre Pseudo" required autofocus/>
             <label>Password :</label><input type="password"  class="form-control" name="pass" required/>
             <label>Rang :</label><input type="text"  class="form-control" name="rank" required/>
-            <h5>0 = membre / 1 = membre + gestion</h5>
+            <h5>0 = douanier de base / 1 = super-douaniers</h5>
 
             <input type="submit" class="btn btn-lg btn-primary btn-block" name="logb" value="Create" />
         </form>
         <hr />
-        <h1>Liste des membres</h1>
+        <h1>Liste des douaniers</h1>
         <table class="table">
               <thead>
                 <tr>
